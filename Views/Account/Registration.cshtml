@@ -1,0 +1,62 @@
+﻿@model TaskManagement.Models.RegistrationViewModel
+
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<main class="d-flex" style="min-height: 100vh;">
+
+    <div class="form-signin w-100 m-auto bg-dark text-white rounded shadow" style="max-width: 400px;">
+        <div class="d-flex justify-content-center">
+            <div class="fs-2"> Authenticator App </div>
+        </div>
+
+
+        <hr class="border-secondary" />
+
+        <form asp-action="Registration">
+            <h1 class="h3 mb-3 fw-normal text-center">Please Register</h1>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (ViewBag.Message != null)
+            {
+                <div class="form-group" style="color: green;">@ViewBag.Message</div>
+            }
+
+            <div class="form-floating mb-1">
+                <input asp-for="UserName" class="form-control bg-dark text-white border-secondary" placeholder="Username">
+                <label class="text-secondary">Username</label>
+            </div>
+            <div class="form-floating mb-1">
+                <input asp-for="Email" type="email" class="form-control bg-dark text-white" placeholder="name@example.com">
+                <label class="text-secondary">Email address</label>
+            </div>
+            <div class="form-floating mb-1">
+                <input asp-for="Password" type="password" class="form-control bg-dark text-white border-secondary" placeholder="Password">
+                <label class="text-secondary">Password</label>
+            </div>
+            <div class="form-floating mb-1">
+                <input asp-for="ConfirmPassword" type="password" class="form-control bg-dark text-white border-secondary" placeholder="Confirm Password">
+                <label class="text-secondary">Confirm Password</label>
+            </div>
+            <button type="submit" class="btn btn-primary w-100 py-2">Sign Up</button>
+
+            <div class="text-center mt-3">
+                Already have an account? <a asp-action="Login">Sign In</a>
+            </div>
+            <hr class="border-secondary" />
+
+            <div class="d-flex flex-column align-items-center">
+                <button type="button" class="login-with-google-btn" onclick=" location.href='@Url.Action("LoginGoogle", "Account")'">
+                    Sign in with Google
+                </button>
+            </div>
+            <p class="mt-5 mb-3 text-center text-secondary">&copy; 2024</p>
+        </form>
+    </div>
+</main>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
