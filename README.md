@@ -1,31 +1,58 @@
-# Custom/Google Authentication
+# Custom/Google Authentication API
 
-A simple authentication app which shows you how to register/login with custom accounts stored into the database, or uses google authentication to register/login with out a custom account.
+A login authentication app which manages various login edge cases, including manual and Google-based login, email verification, password resets, and more. All functionality is exposed via API for external integration.
 
 ## Features
 
-- **Authentication**
-  - Log In/Register with a google account
-  - Create an account which is stored in the database
+- **Login**: Supports manual login and Google authentication.
+- **Sign Up**: Users can register manually or through Google.
+- **Email Verification**: Securely verify user emails upon registration.
+- **Forgot Password**: Send password recovery emails.
+- **Reset Password**: Allow users to reset their passwords securely.
 
-## Technology Stack
+## Database Structure
 
-- **ASP.NET MVC**: For the web application structure.
-- **SQL Server**: To store all user data.
-- **Bootstrap**: For responsive design and form management.
-- **Google Auth**: Authentication provided by google.
+- **Users**: Stores all user-related data.
+- **EmailHistory**: Tracks and logs all outgoing email activity for auditing.
+
+## Account Types
+
+- **Manual**: Accounts created through manual registration.
+- **Google**: Accounts authenticated via Google sign-in.
+
+## Tech Stack
+
+- **ASP.NET MVC**: Provides the backbone for the web app and API functionality.
+- **SQL Server**: Serves as the data storage solution.
+- **MailerSend**: Used for handling all email services (e.g., verification and password resets).
+- **Bootstrap**: Ensures responsive design for all forms and pages.
+- **Google OAuth**: Used for secure, streamlined Google authentication.
+
 
 ## Screenshots
 
 ## Demo
-[Watch the demo on YouTube](https://youtu.be/kyxZ1fS7NIU)
+[Watch the demo on YouTube](https://youtu.be/EXEGD72IHhA)
+
+### API
+![API](Content/api.png)
 
 ### Sign In
-![Sign In - Unique](Content/signin-unique.png)
-![Sign In - Non Google](Content/signin-non.png)
+![Sign In](Content/login.png)
 
 ### Register
-![Register](Content/signin-register.png)
+![Register](Content/register.png)
 
-### Logged In
-![Database](Content/loggedin.png)
+### Home
+![Home](Content/home.png)
+
+### Forgot/Reset Password
+![Reset Password](Content/forgotpassword.png)
+![Reset Password](Content/resetpassword.png)
+
+### Email Verifications
+![Register Verification](Content/verifyemail.png)
+![Reset Password Verification](Content/passwordresetemail.png)
+
+### Database
+![Database](Content/database_new.png)
