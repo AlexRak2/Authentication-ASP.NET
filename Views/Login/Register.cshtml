@@ -1,0 +1,56 @@
+﻿@model Authentication.Models.UserRegisterRequest
+
+
+@{
+    ViewData["Title"] = "Register Page";
+}
+
+<main class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-signin text-dark rounded shadow-lg" style="max-width: 400px; padding: 2.5rem; background: linear-gradient(145deg, #ffffff, #f1f3f5); border-radius: 12px;">
+        
+        <div class="text-center mb-4">
+            <div class="fs-3 fw-bold text-primary">Authenticator App</div>
+            <div class="fs-3 fw-bold text-dark">Register</div>
+
+        </div>
+
+        <hr class="border-primary" />
+
+  
+        <form asp-action="Register">
+
+            <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Email" type="text" class="form-control border-0 shadow-sm" id="inputEmail" placeholder="Email address or Username" style="background-color: #f8f9fa;">
+                <label for="inputEmail" class="text-secondary">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Username" type="text" class="form-control border-0 shadow-sm" id="inputEmail" placeholder="Email address or Username" style="background-color: #f8f9fa;">
+                <label for="inputEmail" class="text-secondary">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control border-0 shadow-sm" id="inputPassword" placeholder="Password" style="background-color: #f8f9fa;">
+                <label for="inputPassword" class="text-secondary">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="ConfirmPassword" type="password" class="form-control border-0 shadow-sm" id="inputPassword" placeholder="Password" style="background-color: #f8f9fa;">
+                <label for="inputPassword" class="text-secondary">Confirm Password</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mb-3 shadow-sm" style="border-radius: 30px;">Sign up</button>
+
+            <div class="text-center">
+                <span>Already have an account? <a asp-action="Login" class="text-primary">Sign In</a></span>
+            </div>
+
+            <hr class="border-primary" />
+
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-secondary w-100 py-2 shadow-sm" style="border-radius: 30px;">Sign up with Google</button>
+                @* <button type="button" class="btn btn-outline-secondary w-100 py-2 shadow-sm" onclick="location.href='@Url.Action("LoginGoogle", "Account")'" style="border-radius: 30px;">Sign in with Google</button> *@
+            </div>
+
+            <p class="mt-4 mb-3 text-center text-muted">&copy; 2024</p>
+        </form>
+    </div>
+</main>

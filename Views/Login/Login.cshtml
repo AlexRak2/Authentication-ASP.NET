@@ -1,0 +1,50 @@
+﻿@model Authentication.Models.UserLoginRequest
+
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<main class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-signin text-dark rounded shadow-lg" style="max-width: 400px; padding: 2.5rem; background: linear-gradient(145deg, #ffffff, #f1f3f5); border-radius: 12px;">
+        
+        <div class="text-center mb-4">
+            <div class="fs-3 fw-bold text-primary">Authenticator App</div>
+            <div class="fs-3 fw-bold text-dark">Login</div>
+        </div>
+
+        <hr class="border-primary" />
+
+  
+        <form asp-action="Login">
+
+            <div asp-validation-summary="All" class="text-danger text-center mb-3"></div>
+
+            <div class="form-floating mb-3">
+                <input asp-for="EmailOrUsername" type="text" class="form-control border-0 shadow-sm" id="inputEmail" placeholder="Email address or Username" style="background-color: #f8f9fa;">
+                <label for="inputEmail" class="text-secondary">Email or Username</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Password" type="password" class="form-control border-0 shadow-sm" id="inputPassword" placeholder="Password" style="background-color: #f8f9fa;">
+                <label for="inputPassword" class="text-secondary">Password</label>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 py-2 mb-3 shadow-sm" style="border-radius: 30px;">Sign in</button>
+
+            <div class="text-center">
+                <span><a asp-action="ForgotPassword" class="text-primary">Forgot Password</a></span>
+            </div>           
+            <div class="text-center">
+                <span>Don't have an account? <a asp-action="Register" class="text-primary">Sign Up</a></span>
+            </div>
+
+            <hr class="border-primary" />
+
+            <div class="d-flex justify-content-center">
+                <button type="button" class="btn btn-outline-secondary w-100 py-2 shadow-sm" onclick="location.href='@Url.Action("LoginGoogle", "Login")'" style="border-radius: 30px;">Sign in with Google</button>
+            </div>
+
+            <p class="mt-4 mb-3 text-center text-muted">&copy; 2024</p>
+        </form>
+    </div>
+</main>

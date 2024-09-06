@@ -1,11 +1,10 @@
+using Authentication.Context;
+using Authentication.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using TaskManagement.Contexts;
-
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -21,10 +20,12 @@ builder.Services.AddAuthentication(options =>
 });
 
 
-builder.Services.AddSession();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<AuthService>(); 
+builder.Services.AddScoped<EmailService>(); 
+builder.Services.AddSession();
+builder.Services.AddDbContext<DataContext>();
 
 var app = builder.Build();
 
@@ -40,25 +41,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseSwagger();
+app.UseSwaggerUI();
 app.UseAuthentication();
-app.UseAuthorization();
+app.UseAuthorization(); 
 app.UseSession();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "Registration",
-        pattern: "Registration",
-        defaults: new { controller = "Account", action = "Registration" });
-
-    endpoints.MapControllerRoute(
-    name: "Login",
-    pattern: "Login",
-    defaults: new { controller = "Account", action = "Login" });
-
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Account}/{action=Login}");
-});
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Login}/{action=Login}/{id?}");
 
 app.Run();

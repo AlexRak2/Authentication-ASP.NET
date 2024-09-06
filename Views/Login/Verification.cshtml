@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Verification Page";
+}
+<main class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <div class="form-signin text-dark rounded shadow-lg" style="width: 100%; max-width: 600px; padding: 2.5rem; background: linear-gradient(145deg, #ffffff, #f1f3f5); border-radius: 12px;">
+
+        <!-- Welcome Title -->
+        <div class="text-center mb-4">
+            <div class="fs-3 fw-bold text-primary">Verify Email!</div>
+        </div>
+
+        <hr class="border-primary" />
+
+        <!-- Content Section -->
+        <div class="text-center mb-4">
+            <div class="fs-5 text-muted">Registration success!</div>
+            <div class="fs-5 text-muted" style="">Check your inbox for a verification code. </div>
+        </div>
+
+        <!-- Log Out Button -->
+        <div class="d-flex justify-content-center">
+            <form asp-action="Logout" method="post">
+                <button type="submit" class="btn btn-dark px-4 py-2 fw-bold">Resend Verification</button>
+            </form>
+        </div>
+
+    </div>
+</main>
